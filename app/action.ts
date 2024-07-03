@@ -16,8 +16,8 @@ async function action(email:string,passwd:string){
         }
 
     });
-    const res1=await prisma.user.findMany({});
-    let temp=JSON.stringify(res1);
+  
+    let temp=JSON.stringify(res);
 
     return temp;
 

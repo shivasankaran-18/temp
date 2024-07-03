@@ -2,10 +2,13 @@
 import {useState} from 'react';
 
 import action from "./action"
+import { useRouter } from 'next/navigation';
 
 const SignupPage = () => {
+
   const [email,setEmail]=useState<string>(" ");
   const [passwd,setPasswd]=useState<string>(" ");
+  
   return (
     <div className="bg-gray-100 flex items-center justify-center min-h-screen">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -52,6 +55,8 @@ const SignupPage = () => {
                   const res=await action(email,passwd)
 
                   console.log(JSON.parse(res));
+                  window.location.href="https://www.google.com/";
+                  
               }}
             >
               Sign Up
