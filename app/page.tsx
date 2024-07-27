@@ -1,13 +1,14 @@
 "use client";
 import {useState} from 'react';
 
-import action from "./action"
+import {signin, signup} from "./action"
 import { useRouter } from 'next/navigation';
 
 const SignupPage = () => {
 
   const [email,setEmail]=useState<string>(" ");
   const [passwd,setPasswd]=useState<string>(" ");
+  const router=useRouter()
   
   return (
     <div className="bg-gray-100 flex items-center justify-center min-h-screen">
@@ -36,7 +37,7 @@ const SignupPage = () => {
             </label>
             <input
               id="password"
-              type="password"
+              type="text"
               placeholder="Password"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               onChange={(e)=>setPasswd(e.target.value)}            
@@ -47,15 +48,50 @@ const SignupPage = () => {
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               onClick={async()=>{
-                
-                  const res=await action(email,passwd)
-
+                try{
+                  const res=await signup(email,passwd)
                   console.log(JSON.parse(res));
-                  window.location.href="https://www.google.com/";
+                  alert("sign up successful")
+
+                }
+                catch{
+                  alert("email already exixts")
+                }
+                
+                  
+
+                  
                   
               }}
             >
               Sign Up
+            </button>
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              onClick={async()=>{
+                
+                  const res=await signin(email,passwd)
+                  
+
+                  let temp=JSON.parse(res);
+                  console.log(JSON.parse(res));
+                  if(!temp)
+                  {
+                    alert("wrong")
+                  }
+                  else{
+                    setTimeout(()=>{
+                      router.push("https://www.google.com/")
+                    },2000)
+                    
+                  }
+
+                 
+                  
+              }}
+            >
+              Sign in
             </button>
           </div>
         
