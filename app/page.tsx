@@ -13,12 +13,8 @@ const SignupPage = () => {
     <div className="bg-gray-100 flex items-center justify-center min-h-screen">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="text-center mb-8">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png"
-            alt="Google"
-            className="mx-auto w-40  "
-          />
-          <h2 className="text-2xl font-bold text-black mt-4">Sign In To Your Google Account  </h2>
+
+          <h2 className="text-2xl font-bold text-black mt-4">Sign In   </h2>
          
         </div>
         
